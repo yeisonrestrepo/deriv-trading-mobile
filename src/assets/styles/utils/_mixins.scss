@@ -1,0 +1,120 @@
+// Trading Dashboard Mixins
+@use "sass:color";
+
+@mixin glassmorphism($opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin metric-card($bg-color: white) {
+  background: $bg-color;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: $shadow-md;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin trading-status($status) {
+  $color: map-get($status-colors, $status);
+  
+  background: rgba($color, 0.1);
+  color: $color;
+  border: 1px solid rgba($color, 0.3);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: $color;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.5rem;
+    
+    @if $status == 'active' {
+      animation: pulse-glow 2s infinite;
+    }
+  }
+}
+
+@mixin trading-pulse($color) {
+  animation: trading-pulse 2s infinite;
+  
+  @keyframes trading-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba($color, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba($color, 0);
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  } @else if $breakpoint == '2xl' {
+    @media (min-width: $breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+@mixin account-card($status: 'inactive') {
+  @include metric-card;
+  
+  border: 2px solid;
+  
+  @if $status == 'active' {
+    border-color: $color-profit;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  } @else {
+    border-color: #e5e7eb;
+    background: white;
+  }
+}
+
+@mixin button-variant($bg, $text: white) {
+  background: $bg;
+  color: $text;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all $transition-normal;
+  cursor: pointer;
+  
+  &:hover:not(:disabled) {
+    background: color.adjust($bg, $lightness: -10%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($bg, 0.3);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

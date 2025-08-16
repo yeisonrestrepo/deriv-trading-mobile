@@ -1,15 +1,29 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": [
-    "env.d.ts",
-    "src/**/*",
-    "src/**/*.vue"
-  ],
-  "exclude": [
-    "src/**/__tests__/*"
-  ],
   "compilerOptions": {
-    "composite": true,
+    // ⚡ CONFIGURACIÓN CLAVE PARA import.meta
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    
+    // 🎯 CONFIGURACIÓN PARA VITE
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    
+    // 📦 CONFIGURACIÓN PARA VUE
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    
+    // 🔧 CONFIGURACIÓN ESTRICTA
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
+    
+    // 📁 RESOLUCIÓN DE MÓDULOS
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
@@ -17,15 +31,60 @@
       "@views/*": ["./src/views/*"],
       "@stores/*": ["./src/stores/*"],
       "@services/*": ["./src/services/*"],
+      "@composables/*": ["./src/composables/*"],
       "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@assets/*": ["./src/assets/*"]
     },
-    "types": [
-      "node"
+    
+    // 🌐 LIBRERÍAS INCLUIDAS
+    "lib": [
+      "ES2020",
+      "DOM",
+      "DOM.Iterable"
     ],
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "exactOptionalPropertyTypes": true
-  }
+    
+    // 📝 TIPOS ADICIONALES
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    
+    // 🔄 CONFIGURACIÓN DE EMISIÓN
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "removeComments": false,
+    "noEmitOnError": true,
+    
+    // 🎭 CONFIGURACIÓN ADICIONAL
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "allowJs": false,
+    "checkJs": false
+  },
+  
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.d.ts",
+    "vite.config.ts",
+    "env.d.ts"
+  ],
+  
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ],
+  
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

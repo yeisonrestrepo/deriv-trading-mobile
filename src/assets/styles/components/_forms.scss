@@ -1,0 +1,22 @@
+.form-group {
+  margin-bottom: spacing(4);
+}
+
+.form-input {
+  &:focus {
+    outline: none;
+    border-color: $color-primary;
+    box-shadow: 0 0 0 3px rgba($color-primary, 0.1);
+  }
+  
+  &.error {
+    border-color: $color-loss;
+    box-shadow: 0 0 0 3px rgba($color-loss, 0.1);
+  }
+}
+
+.form-error {
+  color: $color-loss;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}

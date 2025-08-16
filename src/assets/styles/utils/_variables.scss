@@ -1,0 +1,63 @@
+// Trading Dashboard Variables
+
+// Colors
+$color-primary: #3b82f6;
+$color-primary-dark: #1d4ed8;
+$color-primary-light: #93c5fd;
+
+// Trading States
+$color-profit: #22c55e;
+$color-loss: #ef4444;
+$color-neutral: #6b7280;
+$color-warning: #f59e0b;
+
+// Trading Specific
+$color-long: #10b981;
+$color-short: #f43f5e;
+$color-even: #3b82f6;
+$color-odd: #8b5cf6;
+
+// Status Colors Map
+$status-colors: (
+  'active': $color-profit,
+  'inactive': $color-neutral,
+  'error': $color-loss,
+  'warning': $color-warning,
+  'pending': #f59e0b
+);
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// Animations
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-trading: 0 8px 32px rgba(59, 130, 246, 0.15);
+
+// Z-Index
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-toast: 1080;
